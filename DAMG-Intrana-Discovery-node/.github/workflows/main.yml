@@ -1,0 +1,39 @@
+name: Deploy Node.js project with Pm2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  deploy-main-server:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to main server
+        uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
+        with:
+          pass: ${{ secrets.PASSWORD }}
+          user: ${{ secrets.USERNAME }}
+          host: ${{ secrets.HOSTNAME }}
+          scp: |
+            './src/*' => /var/www/html/nodeapi/src
+            'index.js' => /var/www/html/nodeapi
+            'package.json' => /var/www/html/nodeapi
+
+      - name: SSH into Server and Execute Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /var/www/html/nodeapi/
+            /root/.nvm/versions/node/v16.20.2/bin/node /root/.nvm/versions/node/v16.20.2/bin/npm install
+            /root/.nvm/versions/node/v16.20.2/bin/node /root/.nvm/versions/node/v16.20.2/bin/pm2 restart 0

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character encoding and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Stylesheet links -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Google Fonts preconnect and font imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Inter:wght@300;400&family=Nunito&family=Roboto:wght@300;400;700&family=Sofia+Sans+Condensed&family=Teko&family=Titillium+Web:wght@600&family=Work+Sans&display=swap"
+        rel="stylesheet">
+    <title>Email Verification INTRANA</title>
+</head>
+
+<body style=" margin: 0;
+ font-family: 'Roboto', sans-serif;">
+    <section>
+        <!-- Main container with max width for content -->
+        <div style=" max-width: 600px;
+         margin: auto;">
+            <!-- Header section with background color -->
+            <div style="background:#8fa29e;
+             padding: 4rem; text-align: center;">
+                <img src="" alt="">
+            </div>
+            
+            <!-- Welcome message and verification instructions -->
+            <h1>Welcome to Intrana</h1>
+            <p>Some information about Intrana, what the community means, and why its so great to be a part of it.</p>
+            <p>To verify your E-mail, and to continue setting up your account click below.</p>
+            
+            <!-- Verification button/link container -->
+            <div style="text-align: center;margin: 10px;">
+                <!-- Dynamic verification link using EJS template syntax -->
+                <a href="<%= verificationLink %>" target="_blank" style="background: #222f1b;
+             border-radius: 4px;
+             width: auto;
+             padding: 7px 10px;
+             /* margin: 0 5px; */
+             color: rgb(202, 212, 206);
+             font-weight: 100;
+             font-size: 16px;">Verify my email</a>
+            </div>
+            
+            <!-- Link expiration notice and alternative verification option -->
+            <p>This link expires in 24 hours. If your link has expired <a href="#"><b>Click here</b></a> to receive a
+                new one.</p>
+            
+            <!-- Signature section -->
+            <p>Kind Regards</p>
+            <h2>Your Intrana team</h2>
+            
+            <!-- Logo/Image container -->
+            <div style="width: 100px;background-color:#222f1b ;
+             width: 100px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/330px-Image_created_with_a_mobile_phone.png"
+                    style="width: 100px;" alt="">
+            </div>
+            
+            <!-- Legal information -->
+            <p>Important legal information and copyright etc.</p>
+            
+            <!-- Fixed footer with background color -->
+            <footer style="background:#8fa29e;
+             padding: 2rem; position: fixed;
+             width: 550px;
+             bottom: 0;">
+            </footer>
+        </div>
+    </section>
+</body>
+
+</html>
