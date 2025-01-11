@@ -41,6 +41,21 @@ app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, 'Not found')); // If route is not found, throw a 404 error
 });
 
+// Token-gated service route
+app.get('/api/token-gated-service', async (req, res, next) => {
+  const { address } = req.query; // User's Ethereum address passed as a query parameter
+  try {
+    const balance = await contract.methods.balanceOf(address).call();
+    if (balance > 0) {
+      res.send('Access granted to token-gated service');
+    } else {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Access denied');
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Error handling middleware
 app.use(errorConverter); // Converts errors to ApiError format
 app.use(errorHandler); // Handles errors and sends appropriate responses

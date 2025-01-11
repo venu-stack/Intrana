@@ -25,6 +25,18 @@ const unexpectedErrorHandler = (error) => {
   exitHandler();
 };
 
+// index.js
+
+const express = require('express');
+const app = express();
+const tokenGatedServiceRouter = require('./src/token-gated-service');
+
+app.use('/api', tokenGatedServiceRouter);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
 process.on('uncaughtException', unexpectedErrorHandler);
 process.on('unhandledRejection', unexpectedErrorHandler);
 

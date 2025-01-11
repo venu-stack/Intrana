@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@thirdweb-dev/chains": "^0.1.55",
+    "@thirdweb-dev/sdk": "^4.0.7",
+    "chain-syncer": "^4.1.13",
+    "ethers": "^6.0.0",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3",
+    "web3": "^4.2.0"
+  }
+}
